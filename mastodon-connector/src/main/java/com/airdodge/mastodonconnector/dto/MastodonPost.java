@@ -12,15 +12,11 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MastodonPost {
+
     @JsonProperty("id")
     private String id;
     @JsonProperty("content")
     private String content;
     @JsonProperty("created_at")
     private Instant createdAt;
-
-    @JsonIgnore
-    public boolean isValid() {
-        return id != null && content != null;
-    }
 }
