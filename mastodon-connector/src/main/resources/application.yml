@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    generate-ddl: true
+  application:
+    name: "mastodon-connector"
+  config:
+    import: configserver:http://localhost:8888

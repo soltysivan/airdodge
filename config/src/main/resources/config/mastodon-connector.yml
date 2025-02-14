@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+#Discovery
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+# Database
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:postgresql://localhost:5432/airdodge
+
+#Kafka
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    producer:
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        linger.ms: 1
+        compression.type: lz4
+
+#Other
+mastodon:
+  api:
+    url: https://mastodon.social
+    batch-size: 100
+    poll-interval-ms: 100
+
+kafka:
+  topic:
+    posts-stream: "mastodon"

@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+#Discovery
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#Kafka
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    consumer:
+      group-id: "posts-gateway"
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        fetch.min.bytes: 1
+        fetch.max.wait.ms: 500
+        max.poll.records: 500
+        spring.json.trusted.packages: "*"
+
+kafka:
+  topic:
+    posts-stream: "mastodon"
+  consumer:
+    group-id: "posts-gateway"

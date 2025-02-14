@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    generate-ddl: true
+  application:
+    name: "posts-gateway"
+  config:
+    import: configserver:http://localhost:8888

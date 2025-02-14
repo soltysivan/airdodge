@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+
+kafka:
+  topic:
+    posts-stream: "mastodon"
+  consumer:
+    group-id: "posts-gateway"
