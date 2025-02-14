@@ -42,7 +42,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build and Test Each Module
-        run: mvn clean install -am -pl config,discovery,mastodon-connector,post-gateway
+        run: mvn clean install
 
       - name: Run tests
         run: mvn test
