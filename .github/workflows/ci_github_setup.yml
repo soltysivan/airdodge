@@ -41,10 +41,8 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build and Test Each Module
+        run: mvn clean install -am -pl config,discovery,mastodon-connector,post-gateway
 
       - name: Run tests
         run: mvn test
-
-#test
